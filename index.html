@@ -1,0 +1,2974 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, shrink-to-fit=no">
+  <title>abbvie</title>
+  <link rel="stylesheet" href="vendor/bootstrap.min.css">
+  <style>
+    @font-face {
+      font-family: "roboto";
+      src: url("fonts/Roboto-Thin.woff2") format("woff2"), url("/fonts/Roboto-Thin.woff") format("woff");
+      font-weight: 200;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "roboto";
+      src: url("fonts/Roboto-Light.woff2") format("woff2"), url("/fonts/Roboto-Light.woff") format("woff");
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "roboto";
+      src: url("fonts/Roboto-Regular.woff2") format("woff2"), url("/fonts/Roboto-Regular.woff") format("woff");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "roboto";
+      src: url("fonts/Roboto-Medium.woff2") format("woff2"), url("/fonts/Roboto-Medium.woff") format("woff");
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "roboto";
+      src: url("fonts/Roboto-Bold.woff2") format("woff2"), url("/fonts/Roboto-Bold.woff") format("woff");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "roboto";
+      src: url("fonts/Roboto-Black.woff2") format("woff2"), url("/fonts/Roboto-Black.woff") format("woff");
+      font-weight: 800;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* Global */
+    :root {
+      box-sizing: border-box;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    .content-box-component {
+      box-sizing: content-box;
+    }
+
+    html {
+      font-family: "roboto", Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.2;
+      font-weight: normal;
+      --green: #A8B500;
+      --textgray: #6E6E6E;
+    }
+
+    body {
+      position: relative;
+      background-color: #F4F4FA !important;
+      font-family: "roboto", Arial, sans-serif !important;
+      font-size: 14px !important;
+      line-height: 1.2 !important;
+    }
+
+    .container {
+      max-width: 1140px !important;
+      margin: 0 auto;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      border: 0;
+      padding: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      display: none;
+    }
+
+    .section {
+      margin-top: 150px;
+    }
+
+    @media (max-width: 768px) {
+      .section {
+        margin-top: 75px;
+      }
+    }
+
+    .section__title {
+      position: relative;
+      margin-bottom: 60px;
+      padding-left: 32px;
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #071D49;
+    }
+
+    .section__title:after {
+      content: "";
+      position: absolute;
+      top: 18px;
+      left: 0;
+      width: 12px;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      background-color: var(--green);
+    }
+
+    @media (max-width: 768px) {
+      .section__title:after {
+        top: 15px;
+        width: 10px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section__title {
+        margin-bottom: 30px;
+        padding-left: 22px;
+        font-size: 28px;
+      }
+    }
+
+    .section__tabs {
+      display: flex;
+      margin-left: 0;
+      margin-bottom: 40px;
+      gap: 15px;
+      padding: 6px;
+      list-style: none;
+      background-color: #fff;
+      color: #6E6E6E;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 1024px) {
+      .section__tabs {
+        margin-bottom: 20px;
+        gap: 20px;
+        padding: 4px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section__tabs {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+    }
+
+    .section__tabs-item {
+      flex-grow: 1;
+      border-radius: 10px;
+      font-size: 22px;
+      line-height: 1.2;
+      cursor: pointer;
+    }
+
+    .section__tabs-item:nth-child(3) {
+      white-space: nowrap;
+    }
+
+    @media (max-width: 1024px) {
+      .section__tabs-item:nth-child(3) {
+        white-space: initial;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .section__tabs-item {
+        padding: 10px 15px;
+        font-size: 16px;
+      }
+    }
+
+    .section__tabs-item:has(.section__tabs-btn:checked) {
+      background-color: var(--green);
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .section__tabs-item label {
+      width: 100%;
+      height: 100%;
+      padding: 12px 25px;
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+
+    @media (any-hover: hover) {
+      .section__tabs-item label:hover {
+        opacity: 0.7;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .section__tabs-item label {
+        padding: 10px 15px;
+      }
+    }
+
+    .questions__tabs-label {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+
+    .section__contents {
+      margin: 0;
+      padding: 0;
+    }
+
+    .section__accordion-label {
+      width: 100%;
+      padding: 10px 30px 10px 0;
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+
+    @media (any-hover: hover) {
+      .section__accordion-label:hover {
+        opacity: 0.7;
+      }
+    }
+
+    .section__accordion {
+      display: grid;
+      gap: 16px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    @media (max-width: 768px) {
+      .section__accordion {
+        gap: 12px;
+      }
+    }
+
+    .section__accordion-item {
+      position: relative;
+      padding: 14px 71px 14px 20px;
+      border-radius: 10px;
+      line-height: 1.2;
+      font-size: 18px;
+      background-color: #fff;
+      color: var(--textgray);
+    }
+
+    @media (max-width: 768px) {
+      .section__accordion-item {
+        padding: 5px 15px 5px 12px;
+        font-size: 16px;
+      }
+    }
+
+    .section__accordion-item:after {
+      content: "";
+      position: absolute;
+      top: 24px;
+      right: 37px;
+      width: 11px;
+      height: 20px;
+      background-image: url("./img/arrow.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      transition: transform 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      .section__accordion-item:after {
+        top: 18px;
+        right: 20px;
+        width: 7px;
+        height: 15px;
+      }
+    }
+
+    .section__accordion-content {
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      padding-top: 0;
+      padding-left: 30px;
+      transition: opacity 0.5s, padding-top 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      .section__accordion-content {
+        padding-left: 5px;
+      }
+    }
+
+    .section__accordion-item:has(input:checked) .section__accordion-label {
+      font-weight: 700;
+      color: #071D49;
+    }
+
+    .section__accordion-item:has(input:checked) .section__accordion-content {
+      max-height: initial;
+      padding-top: 10px;
+      opacity: 1;
+    }
+
+    .section__accordion-item:has(input:checked):after {
+      transform: rotate(90deg);
+    }
+
+    .section__accordion-content {
+      font-size: 18px;
+      color: #071D49;
+    }
+
+    @media (max-width: 768px) {
+      .section__accordion-content {
+        font-size: 14px;
+      }
+    }
+
+    .section__accordion-content p {
+      margin: 0;
+      padding: 10px 0;
+    }
+
+    @media (max-width: 768px) {
+      .section__accordion-content p {
+        padding: 5px 0;
+      }
+    }
+
+    .colored {
+      color: var(--green);
+    }
+
+    .section__accordion-content ul {
+      display: grid;
+      gap: 15px;
+      margin: 10px 0 10px 0;
+      padding-left: 2em;
+      list-style: disc;
+    }
+
+    @media (max-width: 768px) {
+      .section__accordion-content ul {
+        gap: 7px;
+        margin: 5px 0 5px 0;
+        padding-left: 1.5em;
+      }
+    }
+
+    .mini {
+      margin: 15px 0;
+      font-size: 12px;
+      color: #B5BBC8;
+      line-height: 1.3;
+    }
+
+    .mini p {
+      padding: 3px 0;
+    }
+
+    @media (max-width: 768px) {
+      .mini {
+        margin: 10px 0;
+      }
+    }
+
+    .cite {
+      margin: 18px 0 18px 0;
+      padding: 5px 27px 5px 27px;
+      border-left: 2px solid var(--green);
+      background-color: #F4F4FA;
+    }
+
+    @media (max-width: 768px) {
+      .cite {
+        margin: 10px 0;
+        padding: 5px 15px 5px 15px;
+      }
+    }
+
+    sup {
+      font-size: 0.6em;
+    }
+
+    .colored-cite {
+      margin: 25px 0 15px 0;
+      padding: 15px 98px 15px 98px;
+      background-color: var(--green);
+      color: #fff;
+      line-height: 1.3;
+    }
+
+    @media (max-width: 768px) {
+      .colored-cite {
+        margin: 15px 0 10px 0;
+        padding: 15px 20px;
+      }
+    }
+
+    .section__accordion-content img {
+      max-width: 100%;
+    }
+
+    .graphical {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 35px;
+      margin: 25px auto;
+    }
+
+    @media (max-width: 570px) {
+      .graphical {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+    .graphical__center {
+      max-width: 250px;
+      margin-top: 35px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 570px) {
+      .graphical__center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        margin-top: 15px;
+      }
+    }
+
+    .graphical__text {
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 570px) {
+      .graphical__arrow {
+        transform: rotate(90deg);
+        margin-bottom: 30px;
+      }
+    }
+
+    @media (max-width: 570px) {
+      .graphical__img_first {
+        margin-left: 25px;
+      }
+    }
+
+    .graphical-row {
+      display: flex;
+      align-items: center;
+      gap: 23px;
+      margin: 30px 0 40px 0;
+    }
+
+    .graphical-row:nth-child(3) {
+      margin-bottom: 60px;
+    }
+
+    @media (max-width: 768px) {
+      .graphical-row {
+        gap: 15px;
+        margin: 15px 0 20px 0;
+      }
+
+      .graphical-row:nth-child(3) {
+        margin-bottom: 30px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .graphical-row {
+        flex-direction: column;
+        gap: 8px;
+        margin: 15px 0 40px 0;
+      }
+
+      .graphical-row:nth-child(3) {
+        margin-bottom: 30px;
+      }
+    }
+
+    .graphical-row__icon {
+      flex-shrink: 0;
+    }
+
+    .graphical-row__img {
+      width: 32px;
+      height: 32px;
+    }
+
+    @media (max-width: 768px) {
+      .graphical-row__img {
+        width: 22px;
+        height: 22px;
+      }
+    }
+
+    .graphical-row__name {
+      font-size: 22px;
+    }
+
+    @media (max-width: 768px) {
+      .graphical-row__name {
+        font-size: 16px;
+      }
+    }
+
+    .graphical-row__line {
+      width: 10%;
+      height: 1px;
+      flex-shrink: 1;
+      background-color: #B5BBC8;
+    }
+
+    @media (max-width: 500px) {
+      .graphical-row__line {
+        width: 1px;
+        height: 30px;
+      }
+    }
+
+    .graphical-row__desc {
+      max-width: 135px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .graphical-row__desc {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .graphical-row__desc {
+        text-align: center;
+      }
+    }
+
+    .graphical-row__sub {
+      display: flex;
+      align-items: center;
+      gap: 45px;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .graphical-row__sub {
+        gap: 15px;
+        font-size: 16px;
+      }
+    }
+
+    .graphical-row__sub-column {
+      display: grid;
+      gap: 10px;
+    }
+
+    .pluced {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 20px 0;
+      font-size: 22px;
+    }
+
+    @media (max-width: 1024px) {
+      .pluced {
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .pluced {
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 385px) {
+      .pluced {
+        flex-direction: column;
+        gap: 5px;
+        padding: 10px 0;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .pluced-text {
+        width: -webkit-min-content;
+        width: -moz-min-content;
+        width: min-content;
+      }
+    }
+
+    ul.prep {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 25px;
+      margin: 10px 0 40px 0;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    @media (max-width: 990px) {
+      ul.prep {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 570px) {
+      ul.prep {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+    }
+
+    .prep__img-wrap {
+      min-height: 240px;
+      display: flex;
+      align-items: center;
+    }
+
+    @media (max-width: 570px) {
+      .prep__img-wrap {
+        min-height: 180px;
+      }
+    }
+
+    .cite__title {
+      margin: 17px 0 8px;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 768px) {
+      .cite__title {
+        font-size: 18px;
+      }
+    }
+
+    .cite-grap {
+      display: flex;
+      gap: 59px;
+      align-items: center;
+      margin: 20px 0 40px;
+      padding-left: 76px;
+    }
+
+    @media (max-width: 1024px) {
+      .cite-grap {
+        gap: 40px;
+        padding-left: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .cite-grap {
+        gap: 30px;
+        margin: 20px 0;
+      }
+    }
+
+    @media (max-width: 440px) {
+      .cite-grap {
+        gap: 15px;
+      }
+    }
+
+    @media (max-width: 385px) {
+      .cite-grap {
+        flex-direction: column;
+      }
+    }
+
+    .cite-grap__img-wrap {
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      img.cite-grap__img {
+        max-width: 130px;
+      }
+    }
+
+    @media (max-width: 440px) {
+      img.cite-grap__img {
+        max-width: 90px;
+      }
+    }
+
+    @media (max-width: 385px) {
+      img.cite-grap__img {
+        max-width: 150px;
+      }
+    }
+
+    .patient-hero {
+      padding-top: 60px;
+    }
+
+    @media (max-width: 1024px) {
+      .patient-hero {
+        padding-top: 30px;
+      }
+    }
+
+    .patient-hero__wrap {
+      position: relative;
+      padding-top: 35px;
+    }
+
+    @media (max-width: 1024px) {
+      .patient-hero__wrap {
+        padding-top: 0px;
+      }
+    }
+
+    .patient-hero__title {
+      margin: 0 0 40px;
+      padding: 0;
+      font-weight: 700;
+      font-size: 48px;
+    }
+
+    @media (max-width: 1024px) {
+      .patient-hero__title {
+        margin: 0 0 30px;
+        font-size: 36px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .patient-hero__title {
+        margin: 0 0 10px;
+      }
+    }
+
+    @media (max-width: 440px) {
+      .patient-hero__title {
+        font-size: 26px;
+      }
+    }
+
+    .patient-hero__colored {
+      color: var(--green);
+    }
+
+    .patient-hero__text {
+      max-width: 80%;
+      border-radius: 20px;
+      padding: 30px 60px;
+      background-color: #44697D;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 400;
+    }
+
+    @media (max-width: 1024px) {
+      .patient-hero__text {
+        padding: 20px 40px;
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .patient-hero__text {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 440px) {
+      .patient-hero__text {
+        padding: 18px 30px;
+        font-size: 14px;
+      }
+    }
+
+    .patient-hero__text-wrap {
+      max-width: 72%;
+    }
+
+    @media (max-width: 1024px) {
+      .patient-hero__text-wrap {
+        max-width: 59%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .patient-hero__text-wrap {
+        max-width: 100%;
+      }
+    }
+
+    .patient-hero__p_opacity {
+      opacity: 0.5;
+    }
+
+    .patient-hero__p {
+      margin: 0 0 20px;
+      line-height: 1.3;
+    }
+
+    .patient-hero__p:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 440px) {
+      .patient-hero__p {
+        margin: 0 0 10px;
+      }
+    }
+
+    .patient-hero__img-wrap {
+      position: absolute;
+      bottom: -2px;
+      right: 0;
+      height: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .patient-hero__img-wrap {
+        position: static;
+        max-width: 420px;
+        margin-bottom: 20px;
+      }
+    }
+
+    .patient-hero__img {
+      width: 100%;
+      height: 100%;
+      -o-object-fit: contain;
+      object-fit: contain;
+    }
+
+    .questions__tabs-content {
+      overflow: hidden;
+      opacity: 0;
+      max-height: 0;
+      transition: opacity 0.5s;
+    }
+
+    .questions:has(#questions-tab-btn-1:checked) #questions-tab-content-1,
+    .questions:has(#questions-tab-btn-2:checked) #questions-tab-content-2,
+    .questions:has(#questions-tab-btn-3:checked) #questions-tab-content-3,
+    .questions:has(#questions-tab-btn-4:checked) #questions-tab-content-4 {
+      opacity: 1;
+      max-height: initial;
+    }
+
+    .questions__tabs-item:nth-child(3) {
+      white-space: nowrap;
+    }
+
+    @media (max-width: 1024px) {
+      .questions__tabs-item:nth-child(3) {
+        white-space: initial;
+      }
+    }
+
+    .questions__straing-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 15px;
+      margin-top: 16px;
+      margin-left: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .questions__straing-list {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .drug {
+      display: flex;
+      align-items: stretch;
+    }
+
+    @media (max-width: 768px) {
+      .drug {
+        flex-direction: column;
+      }
+    }
+
+    .drug__img-wrap {
+      position: relative;
+      flex-shrink: 0;
+      width: 67%;
+      min-height: 300px;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 1024px) {
+      .drug__img-wrap {
+        min-height: 200px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .drug__img-wrap {
+        width: 100%;
+        height: 200px;
+      }
+    }
+
+    .drug__img {
+      width: 100%;
+      height: 100%;
+      -o-object-fit: cover;
+      object-fit: cover;
+    }
+
+    .drug__img-bookmark {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      width: 60px;
+      height: 60px;
+      cursor: pointer;
+    }
+
+    .drug__img-bookmark-svg {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      fill: #fff;
+      transition: all 0.3s;
+    }
+
+    .drug__img-bookmark:hover .drug__img-bookmark-svg {
+      fill: var(--green);
+    }
+
+    .drug__desc {
+      display: flex;
+      flex-direction: column;
+      padding: 30px 24px 20px 20px;
+    }
+
+    @media (max-width: 1024px) {
+      .drug__desc {
+        padding: 20px 16px 16px 14px;
+      }
+    }
+
+    .drug__desc-wrap {
+      flex-grow: 1;
+      padding-bottom: 51px;
+    }
+
+    @media (max-width: 1024px) {
+      .drug__desc-wrap {
+        padding-bottom: 20px;
+      }
+    }
+
+    .drug__tag {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 5px 10px 8px;
+      color: #fff;
+      font-size: 14px;
+      line-height: 1;
+      background-color: #B5BBC8;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 1024px) {
+      .drug__tag {
+        margin-bottom: 10px;
+        padding: 4px 8px 4px;
+        font-size: 12px;
+      }
+    }
+
+    .drug__title {
+      margin-bottom: 20px;
+      font-size: 20px;
+      line-height: 1.2;
+      font-weight: 700;
+      color: #071D49;
+    }
+
+    @media (max-width: 1024px) {
+      .drug__title {
+        margin-bottom: 15px;
+        font-size: 18px;
+      }
+    }
+
+    .drug__info {
+      display: flex;
+      margin-bottom: 20px;
+      gap: 16px;
+      color: #B5BBC8;
+      font-size: 14px;
+    }
+
+    @media (max-width: 1024px) {
+      .drug__info {
+        gap: 14px;
+        font-size: 12px;
+      }
+    }
+
+    .drug__time {
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .drug__time:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 2.5px;
+      width: 12px;
+      height: 12px;
+      background-image: url("./img/time.svg");
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .drug__text {
+      font-size: 18px;
+      line-height: 1.3;
+      color: #071D49;
+    }
+
+    @media (max-width: 1024px) {
+      .drug__text {
+        font-size: 16px;
+        line-height: 1.2;
+      }
+    }
+
+    .drug__link {
+      display: inline-block;
+      padding: 10px 32px 11px;
+      align-self: flex-end;
+      font-size: 16px;
+      color: #fff;
+      text-decoration: none;
+      background-color: var(--green);
+      border-radius: 20px;
+      transition: all 0.3s;
+    }
+
+    @media (max-width: 1024px) {
+      .drug__link {
+        padding: 8px 25px 9px;
+        font-size: 14px;
+      }
+    }
+
+    .drug__link:hover {
+      opacity: 0.5;
+    }
+
+    .drug__text ul {
+      list-style: disc;
+    }
+
+    .drag-mini {
+      display: grid;
+      width: 100%;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    @media (max-width: 1024px) {
+      .drag-mini {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .drag-mini {
+        gap: 15px;
+      }
+    }
+
+    @media (max-width: 570px) {
+      .drag-mini {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .drag-mini__item {
+      display: flex;
+      align-items: stretch;
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: #fff;
+    }
+
+    .drag-mini__img-wrap {
+      width: 50%;
+      min-height: 250px;
+      overflow: hidden;
+      flex-shrink: 0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    @media (max-width: 570px) {
+      .drag-mini__img-wrap {
+        width: 50%;
+        min-height: 150px;
+        max-height: 100%;
+      }
+    }
+
+    .drag-mini__img {
+      width: 100%;
+      height: 100%;
+      -o-object-fit: cover;
+      object-fit: cover;
+    }
+
+    .drag-mini__desc {
+      display: flex;
+      flex-direction: column;
+      padding: 15px 11px 11px 11px;
+    }
+
+    .drag-mini__desc-wrap {
+      flex-grow: 1;
+      margin-bottom: 15px;
+    }
+
+    .drag-mini__link {
+      align-self: flex-end;
+      padding: 8px 18px;
+      font-size: 12px;
+      background-color: #B5BBC8;
+      color: #fff;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .drag-mini__link:hover {
+      background-color: var(--green);
+    }
+
+    .drag-mini__title {
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.1;
+      color: #071D49;
+    }
+
+    .drag-mini__info {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-size: 10px;
+      color: #B5BBC8;
+      line-height: 1;
+    }
+
+    .drag-mini__time {
+      position: relative;
+      padding-left: 14px;
+    }
+
+    .drag-mini__time:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 10px;
+      height: 10px;
+      background-image: url("./img/time.svg");
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .drag-mini__text {
+      font-size: 10px;
+      color: #071D49;
+    }
+
+    .modern__tabs-content {
+      overflow: hidden;
+      opacity: 0;
+      max-height: 0;
+      transition: opacity 0.5s;
+    }
+
+    .modern:has(#modern-tab-btn-1:checked) #modern-tab-content-1,
+    .modern:has(#modern-tab-btn-2:checked) #modern-tab-content-2,
+    .modern:has(#modern-tab-btn-3:checked) #modern-tab-content-3 {
+      opacity: 1;
+      max-height: initial;
+    }
+
+    .modern__tabs-content {
+      background-color: #fff;
+      border-radius: 10px;
+    }
+
+    .modern__tabs-content:has(.drag-mini) {
+      background-color: transparent;
+    }
+
+    .medication__tabs-content {
+      overflow: hidden;
+      opacity: 0;
+      max-height: 0;
+      transition: opacity 0.5s;
+    }
+
+    .medication:has(#medication-tab-btn-1:checked) #medication-tab-content-1,
+    .medication:has(#medication-tab-btn-2:checked) #medication-tab-content-2,
+    .medication:has(#medication-tab-btn-3:checked) #medication-tab-content-3 {
+      opacity: 1;
+      max-height: initial;
+    }
+
+    .medication__tabs-content {
+      background-color: #fff;
+      border-radius: 10px;
+    }
+
+    .medication .drug__link {
+      background-color: #B5BBC8;
+    }
+
+    .library__articles {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 1024px) {
+      .library__articles {
+        gap: 15px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .library__articles {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .library-article {
+      display: flex;
+      align-items: stretch;
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: #fff;
+    }
+
+    .library-article__img-wrap {
+      width: 60%;
+      min-height: 382px;
+      overflow: hidden;
+      flex-shrink: 0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    @media (max-width: 1024px) {
+      .library-article__img-wrap {
+        width: 50%;
+        min-height: 250px;
+      }
+    }
+
+    .library-article__img {
+      width: 100%;
+      height: 100%;
+      -o-object-fit: cover;
+      object-fit: cover;
+    }
+
+    .library-article__desc {
+      display: flex;
+      flex-direction: column;
+      padding: 20px 16px;
+    }
+
+    .library-article__desc-wrap {
+      flex-grow: 1;
+      margin-bottom: 15px;
+    }
+
+    .library-article__link {
+      align-self: flex-end;
+      padding: 8px 18px;
+      font-size: 12px;
+      background-color: #B5BBC8;
+      color: #fff;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .library-article__link:hover {
+      background-color: var(--green);
+    }
+
+    .library-article__title {
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.1;
+      color: #071D49;
+    }
+
+    .library-article__info {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-size: 10px;
+      color: #B5BBC8;
+      line-height: 1;
+    }
+
+    .library-article__time {
+      position: relative;
+      padding-left: 14px;
+    }
+
+    .library-article__time:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 10px;
+      height: 10px;
+      background-image: url("./img/time.svg");
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .library-article__text {
+      font-size: 10px;
+      color: #071D49;
+    }
+
+    .library-article__text ul {
+      margin-top: 15px;
+      padding-left: 2em;
+      list-style: disc;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="patient-hero">
+    <div class="container">
+      <div class="patient-hero__wrap">
+        <div class="patient-hero__desc">
+          <h1 class="patient-hero__title">
+            Святослав Николаевич
+            <br>
+            Федоров
+            <span class="patient-hero__colored">о хирургии:</span>
+          </h1>
+          <div class="patient-hero__img-wrap">
+            <img src="./img/patient-hero.webp" alt="" class="patient-hero__img">
+          </div>
+          <div class="patient-hero__text">
+            <div class="patient-hero__text-wrap">
+              <p class="patient-hero__p patient-hero__p_opacity">
+                – Кого оперируете лично Вы? Каких-нибудь знаменитостей или сильных мира сего?
+              </p>
+              <p class="patient-hero__p">
+                – Я стараюсь делать новые по технологии операции или очень трудные. Такие, какие дали бы стимул моему
+                мозгу двигаться
+                впе­ред. То есть моя сфера в хирургии – это самое сложное и самое необычное, самое первое, еще не
+                известное, чтобы
+                увидеть новые воз­можности.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="questions section">
+    <div class="container">
+      <h2 class="questions__title section__title">
+        Актуальные ответы на самые частые вопросы
+      </h2>
+
+      <ul class="questions__tabs section__tabs">
+        <li class="questions__tabs-item section__tabs-item">
+          <label class="questions__tabs-label">
+            <input type="radio" class="visually-hidden section__tabs-btn" name="questions-tab-btn" value="" checked
+              id="questions-tab-btn-1">
+            Пациенты для противовоспалительной терапии
+          </label>
+        </li>
+        <li class="questions__tabs-item section__tabs-item">
+          <label class="questions__tabs-label">
+            <input type="radio" class="visually-hidden section__tabs-btn" name="questions-tab-btn" value=""
+              id="questions-tab-btn-2">Механизм действия Озурдекс ®
+          </label>
+        </li>
+        <li class="questions__tabs-item section__tabs-item">
+          <label class="questions__tabs-label">
+            <input type="radio" class="visually-hidden section__tabs-btn" name="questions-tab-btn" value=""
+              id="questions-tab-btn-3">
+            График инъекций
+          </label>
+        </li>
+        <li class="questions__tabs-item section__tabs-item">
+          <label class="questions__tabs-label">
+            <input type="radio" class="visually-hidden section__tabs-btn" name="questions-tab-btn" value=""
+              id="questions-tab-btn-4">
+            Безопасность
+          </label>
+        </li>
+      </ul>
+
+      <ul class="section__contents questions__contents">
+        <li class="questions__tabs-content" id="questions-tab-content-1">
+          <ul class="section__accordion">
+            <li class="section__accordion-item">
+              <label class="section__accordion-label">
+                <input type="radio" class="visually-hidden" name="questions__accordion-btn" value=""
+                  id="questions__accordion-btn-1">
+                Каким пациентам показана терапия препаратом ОЗУРДЕКС<sup>®</sup>?
+              </label>
+              <div class="section__accordion-content">
+                <p>
+                  ОЗУРДЕКС<sup>®</sup> показан для лечения:
+                </p>
+                <ul>
+                  <li>
+                    взрослых пациентов со снижением остроты зрения <span class="colored">вследствие ДМО при
+                      псевдофакии</span>
+                  </li>
+                  <li>
+                    взрослых пациентов с <span class="colored">неудовлетворительным ответом
+                      на препараты </span>, отличные от кортикостероидов, или с противопоказаниями к их
+                    применению<sup>5</sup>.
+                  </li>
+                </ul>
+                <div class="cite">
+                  <p>
+                    ОЗУРДЕКС® может обеспечить пациентам улучшение зрения благодаря
+                    упрощенному графику введения <sup>5,10</sup> и широкому механизму действия за счет
+                    подавления медиаторов воспаления, играющих значимую роль в патогенезе
+                    ДМО<sup>*1, 2, 5–9</sup>.
+                  </p>
+                </div>
+                <div class="mini">
+                  <p>* Доказательства включают данные, полученные на моделях животных.</p>
+                  <p>Подробнее о данных по препарату ОЗУРДЕКС<sup>®</sup>, полученных в условиях клинической практики
+                  </p>
+                  <p>Подробнее о данных по препарату ОЗУРДЕКС<sup>®</sup>, полученных в опорных
+                    исследованиях</p>
+                  <p>Подробнее о механизме действия препарата ОЗУРДЕКС<sup>®</sup></p>
+                  <p>Данные повседневной клинической практики собирают вне контролируемых клинических исследований, в
+                    связи с чем они имеют
+                    ограничения (например,
+                    недостаточный контроль сопутствующих факторов). В отсутствие прямых
+                    сравнительных клинических исследований нельзя сделать достоверные
+                    выводы.</p>
+                </div>
+              </div>
+            </li>
+            <li class="section__accordion-item">
+              <label class="section__accordion-label">
+                <input type="radio" class="visually-hidden" name="questions__accordion-btn" value=""
+                  id="questions__accordion-btn-2">
+                У каких пациентов, ранее не получавших лечения, целесообразна терапия препаратом ОЗУРДЕКС<sup>®</sup>?
+              </label>
+              <div class="section__accordion-content">
+                <p>
+                  ОЗУРДЕКС<sup>®</sup> показан для лечения:
+                </p>
+                <ul>
+                  <li>
+                    взрослых пациентов со снижением остроты зрения <span class="colored">вследствие ДМО при псевдофакии
+                    </span>
+                  </li>
+                  <li>
+                    взрослых пациентов с <span class="colored">неудовлетворительным ответом
+                      на препараты</span>, отличные от кортикостероидов, или с противопоказаниями к их
+                    применению<sup>5</sup>.
+                  </li>
+                </ul>
+                <p>
+                  В популяции, ранее не получавшей лечения, ОЗУРДЕКС® может быть подходящим
+                  препаратом первой линии для пациентов с псевдофакией или считающихся
+                  подходящими для кортикостероидной терапии первой линии<sup>5</sup>.
+                </p>
+                <p>
+                  В рекомендациях Европейского общества ретинологов (EURETINA) по лечению
+                  ДМО указано, что к пациентам, которым может подойти кортикостероидная терапия
+                  первой линии, относятся:
+                </p>
+                <ul>
+                  <li>
+                    пациенты, <span class="colored">не желающие выполнять ежемесячные инъекции</span>
+                    в течение первых 6 месяцев
+                  </li>
+                  <li>
+                    пациенты <span class="colored">с предшествующими тяжелыми
+                      осложнениями сердечно-сосудистых заболеваний</span>, поскольку такие пациенты были
+                    исключены из всех крупных исследований антиVEGF препаратов<sup>11</sup>.
+                  </li>
+                </ul>
+                <div class="colored-cite">
+                  <p>
+                    ОЗУРДЕКС®
+                    может помочь снизить нагрузку, связанную с лечением, у этих пациентов благодаря
+                    упрощенному графику введения, повторное лечение можно проводить примерно
+                    через 6 месяцев, а нагрузочная доза препарата ОЗУРДЕКС® отсутствует <sup>5</sup>.
+                  </p>
+                </div>
+                <p>
+                  При применении препарата ОЗУРДЕКС<sup>®</sup> необходим регулярный контроль ВГД5.
+                </p>
+                <p>
+                  В клинических исследованиях и повседневной клинической практике препарат
+                  ОЗУРДЕКС® обеспечил улучшения зрения у пациентов, не получавших лечения <sup>10, 12</sup>.
+                </p>
+                <p>
+                  В ходе опорного исследования MEAD (n = 351) 22,2% пациентов, включая тех, кто
+                  не получал лечения (n = 104), достигли улучшения МКОЗ на ≥ 15 букв от исходного
+                  уровня до 3-го года или итогового визита (p < 0,001 в сравнении с плацебо, n=350, из которых 12%
+                    пациентов достигли улучшения МКОЗ на ≥ 15 букв)<sup>10</sup>. В исследовании в условиях
+                    повседневной
+                    клинической практики пациенты, не получавшие лечения (n=176), достигли улучшения в среднем на 12
+                    букв при 1,9 инъекции в течение 10,8 месяца последующего наблюдения на фоне применения препарата
+                    ОЗУРДЕКС <sup>®12</sup>.
+                </p>
+                <div class="mini">
+                  <p>
+                    Подробнее о данных по препарату ОЗУРДЕКС<sup>®</sup>, полученных в условиях клинической
+                    практики
+                  </p>
+                  <p>
+                    Подробнее о данных по препарату ОЗУРДЕКС<sup>®</sup>, полученных в опорных
+                    исследованиях
+                  </p>
+                </div>
+                <p>
+                  <strong>
+                    Данные повседневной клинической практики собирают вне контролируемых
+                    клинических исследований, в связи с чем они имеют ограничения (например,
+                    недостаточный контроль сопутствующих факторов). В отсутствие прямых
+                    сравнительных клинических исследований нельзя сделать достоверные
+                    выводы.
+                  </strong>
+                </p>
+                <p>
+                  <strong>Boyer D et al. 2014.</strong> Данные опорного исследования MEAD включали два
+                  рандомизированных многоцентровых слепых плацебо-контролируемых
+                  исследования III фазы с идентичными протоколами, проведенных для оценки
+                  безопасности и эффективности препарата ОЗУРДЕКС<sup>®</sup> при лечении пациентов
+                  с ДМО.
+                </p>
+                <div class="cite">
+                  <p>
+                    1048 пациентов были рандомизированы в соотношении 1 : 1 : 1 на группы
+                    лечения препаратом ОЗУРДЕКС<sup>®</sup> 0,7 мг (n = 351), имплантатом дексаметазона
+                    0,35 мг (n = 347, данная дозировка не представлена на рынке) и плацебо (n = 350).
+                  </p>
+                </div>
+                <p>
+                  Пациентов наблюдали в течение трех лет (или 39 месяцев, если инъекцию выполняли
+                  в течение 36-го месяца); количество запланированных визитов составляло ≤ 40.
+                  Основной конечной точкой было улучшение МКОЗ на ≥ 15 букв по сравнению
+                  с исходным уровнем. При проведении анализа результаты были объединены.
+                  <span class="colored">Основной конечной точки достигли 22,2% пациентов, получавших препарат
+                    ОЗУРДЕКС<sup>®</sup></span> (p < 0,001). Частота связанных с катарактой НЯ в псевдофакичных глазах
+                    составила 67,9% при использовании препарата ОЗУРДЕКС<sup>®</sup>. Повышение ВГД обычно
+                    контролировалось с
+                    применением лекарственной терапии или без нее; только одному пациенту (0,3%), получавшему ОЗУРДЕКС®,
+                    потребовалась трабекулэктомия в связи с повышением ВГД, связанным с применением
+                    стероидов<sup>10</sup>.
+                </p>
+                <p>
+                  <strong>Kodjikian L et al. 2018.</strong> Результаты поиска литературы в базе данных PubMed,
+                  выполненного 01 февраля 2018 г., включали 63 обсервационных исследования
+                  о лечении ДМО препаратом ОЗУРДЕКС<sup>®</sup> (31 исследование; 1703 глаза) и aнтиVEGF
+                  препаратами (32 исследования, 6842 глаза).
+                </p>
+                <p>
+                  В анализ включали только те исследования, в которых участвовали не менее 10 пациентов на протяжении
+                  как
+                  минимум 6 месяцев. <span class="colored">Анализ выполняли в общей популяции и в подгруппах для
+                    определения эффективности лечения и количества интравитреальных инъекций</span>
+                  (ИВИ) в условиях повседневной клинической практики.
+                </p>
+                <p>
+                  Ограничения этого
+                  метаанализа заключались в различиях объема выборки n, определений остроты зрения (ОЗ) в некоторых
+                  исследованиях aнтиVEGF
+                  препаратов и имплантата
+                  ОЗУРДЕКС<sup>®</sup>, а также долей ранее не леченых глаз, в которые вводили ОЗУРДЕКС<sup>®</sup>
+                  (1/5 ранее не леченых глаз) или aнтиVEGF препараты (2/3 ранее не леченых глаз)<sup>12</sup>.
+                </p>
+              </div>
+            </li>
+            <li class="section__accordion-item">
+              <label class="section__accordion-label">
+                <input type="radio" class="visually-hidden" name="questions__accordion-btn" value=""
+                  id="questions__accordion-btn-3">
+                У каких пациентов с резистентностью к предыдущему лечению целесообразна терапия препаратом
+                ОЗУРДЕКС<sup>®</sup>?
+              </label>
+              <div class="section__accordion-content">
+                <p>
+                  ОЗУРДЕКС<sup>®</sup> показан для лечения:
+                </p>
+                <ul>
+                  <li>
+                    взрослых пациентов со снижением остроты зрения <span class="colored">вследствие ДМО при псевдофакии
+                    </span>
+                  </li>
+                  <li>
+                    взрослых пациентов с <span class="colored">неудовлетворительным ответом
+                      на препараты</span>, отличные от кортикостероидов, или с противопоказаниями к их
+                    применению<sup>5</sup>.
+                  </li>
+                </ul>
+                <div class="colored-cite">
+                  <p>
+                    В популяции с резистентностью к предыдущему лечению препарат
+                    ОЗУРДЕКС<sup>®</sup> может использоваться <strong>в качестве терапии второй линии для
+                      пациентов с недостаточным ответом</strong> на терапию препаратами, отличными от
+                    глюкокортикостероидов<sup>5</sup>.
+                  </p>
+                </div>
+                <p>
+                  В исследовании в условиях повседневной клинической практики (n = 69) было
+                  доказано, что у пациентов, рано перешедших на ОЗУРДЕКС<sup>®</sup> (n = 31, после
+                  недостаточного ответа на 3 антиVEGF ИВИ), были достигнуты статистически
+                  значимые улучшение зрения и уменьшение толщины сетчатки в центральном
+                  подполе (ТСЦП). У этих пациентов медиана увеличения МКОЗ составила 0,2 ОЗ
+                  по десятичной шкале, p = 0,0043, а медиана изменения ТСЦП составила –116 мкм
+                  (p = 0,0002). Однако у пациентов, перешедших на данный препарат позже
+                  (n = 38, после недостаточного ответа на ≥ 6 антиVEGF ИВИ), не было достигнуто
+                  статистически значимого улучшения зрения, p = 0,8602. У этих пациентов медиана
+                  изменения ТСЦП составила –77 мкм (p = 0,0038). Недостаточный ответ на антиVEGF
+                  препараты определялся в данном исследовании как уменьшение ТСЦП или
+                  общего объема макулы (ООМ) < 10% и (или) улучшение МОКЗ < 0,1 (по десятичной шкале)<sup>*13</sup>.
+                </p>
+                <div class="mini">
+                  <p>
+                    Подробнее о данных по препарату ОЗУРДЕКС<sup>®</sup>, полученных в условиях клинической
+                    практики
+                  </p>
+                  <p>
+                    Подробнее о данных по препарату ОЗУРДЕКС<sup>®</sup>, полученных в опорных
+                    исследованиях
+                  </p>
+                  <p>
+                    * Повышение ОЗ по десятичной шкале с 0,2 до 0,4 эквивалентно улучшению ОЗ по
+                    таблице Снеллена с 20/100 до 20/50 или по шкале LogMAR с 0,7 до 0,4.
+                  </p>
+                </div>
+                <p>
+                  <strong>
+                    Данные повседневной клинической практики собирают вне контролируемых
+                    клинических исследований, в связи с чем они имеют ограничения (например,
+                    недостаточный контроль сопутствующих факторов). В отсутствие прямых
+                    сравнительных клинических исследований нельзя сделать достоверные
+                    выводы.
+                  </strong>
+                </p>
+                <p>
+                  <strong>Boyer D et al. 2014.</strong> Данные опорного исследования MEAD включали два
+                  рандомизированных многоцентровых слепых плацебо-контролируемых
+                  исследования III фазы с идентичными протоколами, проведенных для оценки
+                  безопасности и эффективности препарата ОЗУРДЕКС<sup>®</sup> при лечении пациентов с
+                  ДМО.
+                </p>
+                <div class="cite">
+                  1048 пациентов были рандомизированы в соотношении 1 : 1 : 1 на группы
+                  лечения препаратом ОЗУРДЕКС<sup>®</sup> 0,7 мг (n = 351), имплантатом дексаметазона
+                  0,35 мг (n = 347, данная дозировка не представлена на рынке) и плацебо (n = 350).
+                </div>
+                <p>
+                  Пациентов наблюдали в течение трех лет (или 39 месяцев, если инъекцию выполняли
+                  в течение 36-го месяца); количество запланированных визитов составляло ≤ 40.
+                  <span class="colored">Основной конечной точкой было улучшение МКОЗ на ≥ 15 букв по сравнению
+                    с исходным уровнем. При проведении анализа результаты были объединены.
+                    Основной конечной точки достигли 22,2% пациентов, получавших препарат
+                    ОЗУРДЕКС<sup>®</sup></span> (p < 0,001). Частота связанных с катарактой НЯ в псевдофакичных глазах
+                    составила 67,9% при использовании препарата ОЗУРДЕКС<sup>®</sup>. Повышение ВГД обычно
+                    контролировалось с
+                    применением лекарственной терапии или без нее; только
+                    одному пациенту (0,3%), получавшему ОЗУРДЕКС<sup>®</sup>, потребовалась трабекулэктомия в связи с
+                    повышением ВГД, связанным с
+                    применением стероидов<sup>10</sup>.
+                </p>
+                <p>
+                  <strong>Hernández Martínez A et al. 2020.</strong> Ретроспективное одноцентровое исследование
+                  по оценке лечения 69 глаз (31 случай ранней смены терапии и 38 случаев поздней
+                  смены) в офтальмологическом центре Испании, предназначенное для сравнения
+                  результатов при раннем (после 3 ИВИ) или позднем (после ≥ 6 ИВИ) переходе на
+                  ОЗУРДЕКС<sup>®</sup> пациентов с ДМО и недостаточным ответом на антиVEGF препараты.
+                </p>
+                <p>
+                  В течение периода наблюдения офтальмогипертензия была выявлена в 3 (9,7%)
+                  и 10 (26,3%) глазах из групп ранней и поздней смены терапии соответственно<sup>13</sup>.
+                </p>
+              </div>
+            </li>
+            <li class="section__accordion-item">
+              <label class="section__accordion-label">
+                <input type="radio" class="visually-hidden" name="questions__accordion-btn" value=""
+                  id="questions__accordion-btn-4">
+                Можно ли применять препарат ОЗУРДЕКС<sup>®</sup> у пациентов
+                с псевдофакией?
+              </label>
+              <div class="section__accordion-content">
+                <p>
+                  ОЗУРДЕКС<sup>®</sup> показан для лечения:
+                </p>
+                <ul>
+                  <li>
+                    взрослых пациентов со снижением остроты зрения <span class="colored">вследствие ДМО при псевдофакии
+                    </span>
+                  </li>
+                  <li>
+                    взрослых пациентов с <span class="colored">неудовлетворительным ответом
+                      на препараты</span>, отличные от кортикостероидов, или с противопоказаниями к их
+                    применению<sup>5</sup>.
+                  </li>
+                </ul>
+                <div class="cite">
+                  <p>
+                    В популяции с псевдофакией препарат ОЗУРДЕКС<sup>®</sup> может быть показан
+                    пациентам с недостаточным ответом на терапию препаратами, отличными от
+                    глюкокортикостероидов, или с противопоказаниями к такой терапии<sup>5</sup>.
+                  </p>
+                </div>
+                <div class="mini">
+                  <p>
+                    Подробнее о данных по препарату ОЗУРДЕКС<sup>®</sup>, полученных в условиях клинической
+                    практики
+                  </p>
+                  <p>
+                    Подробнее о данных по препарату ОЗУРДЕКС<sup>®</sup>, полученных в опорных
+                    исследованиях
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="section__accordion-item">
+              <label class="section__accordion-label">
+                <input type="radio" class="visually-hidden" name="questions__accordion-btn" value=""
+                  id="questions__accordion-btn-5">
+                Есть ли другие показания к применению препарата ОЗУРДЕКС<sup>®</sup>?
+              </label>
+              <div class="section__accordion-content">
+                <p>
+                  <span class="colored">Да</span>, ОЗУРДЕКС<sup>®</sup> показан для лечения взрослых
+                  пациентов<sup>5</sup>:
+                </p>
+                <ul>
+                  <li>
+                    взрослых пациентов со снижением остроты зрения <span class="colored">вследствие ДМО при псевдофакии
+                    </span>
+                  </li>
+                  <li>
+                    взрослых пациентов с <span class="colored">неудовлетворительным ответом
+                      на препараты</span>, отличные от кортикостероидов, или с противопоказаниями к их
+                    применению<sup>5</sup>.
+                  </li>
+                  <li>
+                    <span class="colored">с макулярным отеком</span>, развившимся вследствие окклюзии ветви центральной
+                    вены
+                    сетчатки (ОВЦВС) или окклюзии центральной вены сетчатки (ОЦВС);
+                  </li>
+                  <li>
+                    <span class="colored">с воспалением заднего сегмента глаза</span> в форме неинфекционного увеита.
+                  </li>
+                </ul>
+                <div class="mini">
+                  <p>
+                    Подробнее о данных по препарату ОЗУРДЕКС<sup>®</sup>, полученных в условиях клинической
+                    практики
+                  </p>
+                  <p>
+                    Подробнее о данных по препарату ОЗУРДЕКС<sup>®</sup>, полученных в опорных
+                    исследованиях
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <ul class="questions__straing-list">
+            <li class="questions__straing-item">
+              Сокращения и литература <br>
+              МКОЗ — максимальная корригированная острота зрения; ТСЦЗ — толщина сетчатки в центральной зоне; <br>
+              ДМО — диабетический макулярный отек; ICAM-1 — молекула межклеточной адгезии 1; <br>
+              ИЛ-1β — интерлейкин-1 бета; ИЛ-6 — интерлейкин-6; ВГД — внутриглазное давление; <br>
+              ИВИ — интравитреальная инъекция; MCP-1 — моноцитарный хемоаттрактантный белок 1; <br>
+              ФНО-α — фактор некроза опухоли-альфа; VEGF — фактор роста эндотелия сосудов. <br>
+              1. Bahrami B et al. Diabetologia 2016; 59: 1594-608. <br>
+              2. Urias E et al. Vision Research 2017; 139: 221-7.
+            </li>
+            <li class="questions__straing-item">
+              3. Munk M et al. Int J Mol Sci 2022; 23: 7585. <br>
+              4. Noma H et al. Int J Mol Sci 2021; 22: 3427. <br>
+              5. Инструкция по медицинскому применению лекарственного препарата ОЗУРДЕКС®. <br>
+              6. Nehmé A and J Edelman. Invest Ophthalmol Vis Sci 2008; 49(5): 2030-8. <br>
+              7. García-Layana A et al. Ophthalmologica 2018; 240(2): 61-72. <br>
+              8. Siqueiros-Marquez L et al. Invest Ophthalmol Vis Sci 2017; 58: 876-86. <br>
+              9. Wang K et al. Biol Pharm Bull 2008; 31(8): 1541-6. <br>
+              10. Boyer D et al. Ophthalmology 2014; 121(10): 1904-14.
+            </li>
+            <li class="questions__straing-item">
+              11. Schmidt-Erfurth U et al. Ophthalmologica 2017; 237(4): 185-222.<br>
+              12. Kodjikian L et al. BioMed Research International 2018. https://doi.org10.1155/2018/8289253. <br>
+              13. Hernández Martínez A et al. Eur J Ophthalmol 2020; 30(5): 1091-8. <br>
+              14. Sivaprasad S and Oyetunde S. Clin Ophthalmol 2016; 24(10): 939-46. <br>
+              15. Rose MA et al. Clin Exp Ophthalmol 2020; 48(9): 1286-98. <br>
+              16. Kiss S et al. Clin Ophthalmol 2016; 10: 2443. <br>
+              17. Инструкция по медицинскому применению лекарственного препарата Луцентис.
+
+            </li>
+            <li class="questions__straing-item">
+              18. Инструкция по медицинскому применению лекарственного препарата Эйлеа. <br>
+              19. Инструкция по медицинскому применению лекарственного препарата Беову. <br>
+              20. Инструкция по медицинскому применению лекарственного препарата Вабисмо. <br>
+              21. Haghjou N et al. J Ophthalmic Vis Res 2011; 6(4): 317-29. <br>
+              22. Sampat K et al. Curr Opin Ophthalmol 2010; 21: 178-83. <br>
+              23. Malcles A et al. Retina 2017; 37(7): 1352-9. <br>
+              24. Becker C et al. Eye 2018; 32(6): 1028-35. <br>
+              25. Udaondo P et al. Clin Ophthalmol 2021; 15: 3183-95.
+            </li>
+          </ul>
+        </li>
+        <li class="questions__tabs-content" id="questions-tab-content-2">
+          <ul class="section__accordion">
+            <li class="section__accordion-item">
+              <label class="section__accordion-label">
+                <input type="radio" class="visually-hidden" name="questions__accordion-btn" value=""
+                  id="questions__accordion-btn-1">
+                Какова роль воспаления в ДМО?
+              </label>
+              <div class="section__accordion-content">
+                <p>
+                  Воспаление играет важную роль в многофакторном патогенезе ДМО<sup>1–4</sup>.
+                </p>
+                <p>
+                  Гипергликемия запускает биохимические пути, которые усиливают воспаление
+                  в глазах за счет высвобождения провоспалительных медиаторов<sup>1, 2</sup>. <span class="colored">
+                    К ним относятся
+                    ICAM-1, ИЛ-1β, ИЛ-6, MCP-1, ФНО-α и VEGF<sup>1, 2</sup>.</span>
+                </p>
+                <p>
+                  Эти медиаторы воспаления способствуют разрушению гемато-ретинального
+                  барьера, что приводит к накоплению избытка жидкости и липидов в макуле<sup>1, 2</sup>.
+                  Это может привести к отеку фовеальной области и потере зрения<sup>1, 2</sup>.
+                  При лечении ДМО необходимо учитывать, в частности, воспалительный и
+                  сосудистый характер заболевания<sup>1-4</sup>.
+                </p>
+                <p>
+                  <img src="./img/график.png" alt="">
+                </p>
+                <p>
+                  В патофизиологии ДМО играют роль многие факторы, и мы продолжаем узнавать о них все больше.
+                </p>
+                <div class="mini">
+                  <p>
+                    Подробнее о противовоспалительном механизме действия препарата ОЗУРДЕКС<sup>®</sup>
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="section__accordion-item">
+              <label class="section__accordion-label">
+                <input type="radio" class="visually-hidden" name="questions__accordion-btn" value=""
+                  id="questions__accordion-btn-2">
+                Какой механизм действия у препарата ОЗУРДЕКС<sup>®</sup>?
+              </label>
+              <div class="section__accordion-content">
+                <p>
+                  ОЗУРДЕКС<sup>®</sup> представляет собой кортикостероид, обладающий широким
+                  механизмом действия и подавляющий воспаление<sup>5-9</sup>.
+                </p>
+                <div class="graphical">
+                  <div class="graphical__img-wrap">
+                    <img src="./img/восполение.png" width="194" alt="" class="graphical__img graphical__img_first">
+                  </div>
+                  <div class="graphical__center">
+                    <div class="graphical__text">
+                      ОЗУРДЕКС® уменьшает ДМО за счет
+                      противовоспалительного действия
+                    </div>
+                    <div class="graphical__arrow">
+                      <img src="./img/arrowLong.svg" width="54" alt="" class="graphical__arrow-img">
+                    </div>
+                  </div>
+                  <div class="graphical__img-wrap">
+                    <img src="./img/озурдекс.png" width="144" alt="" class="graphical__img">
+                  </div>
+                </div>
+                <p>
+                  Было доказано, что <span class="colored">дексаметазон подавляет медиаторы воспаления, играющие
+                    значимую роль в патогенезе ДМО (в том числе ICAM-1, ИЛ-1β, ИЛ-6, MCP-1 и
+                    ФНО-α)</span>, а также препятствует разрушению гемато-ретинального барьера<sup>*1, 2, 5–9</sup>.
+                  Кроме того, было доказано, что кортикостероиды подавляют экспрессию VEGF<sup>5</sup>.
+                </p>
+                <p>
+                  Таким образом, было доказано, что препарат ОЗУРДЕКС<sup>®</sup> уменьшает ДМО за счет
+                  противовоспалительного действия, воздействия на сосуды и активации дренажных
+                  механизмов<sup>*5-9</sup>.
+                </p>
+                <div class="mini">
+                  <p>
+                    * Доказательства включают данные, полученные на моделях животных.
+                  </p>
+                  <p>
+                    Подробнее о механизме действия препарата ОЗУРДЕКС®
+                  </p>
+                  <p>
+                    Подробнее о роли воспаления в развитии ДМО
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="section__accordion-item">
+              <label class="section__accordion-label">
+                <input type="radio" class="visually-hidden" name="questions__accordion-btn" value=""
+                  id="questions__accordion-btn-3">
+                Воздействует ли ОЗУРДЕКС<sup>®</sup> на несколько медиаторов
+                воспаления?
+              </label>
+              <div class="section__accordion-content">
+                <p>
+                  Было доказано, что дексаметазон подавляет по крайней мере пять
+                  провоспалительных медиаторов, играющих значимую роль в патогенезе ДМО
+                  (ICAM-1, ИЛ-1β, ИЛ-6, MCP-1 и ФНО-α)<sup>*1, 2, 5–9</sup>. Кроме того, было доказано, что
+                  кортикостероиды подавляют экспрессию VEGF<sup>5</sup>.
+                </p>
+                <div class="graphical-row">
+                  <div class="graphical-row__icon">
+                    <img src="./img/галочка.svg" width="32" height="32" alt="" class="graphical-row__img">
+                  </div>
+                  <div class="graphical-row__name">Дексаметазон</div>
+                  <div class="graphical-row__line"></div>
+                  <div class="graphical-row__desc">
+                    <span class="colored">подавляет</span> пять
+                    провоспалительных медиаторов
+                  </div>
+                  <div class="graphical-row__line"></div>
+                  <div class="graphical-row__sub">
+                    <div class="graphical-row__sub-column">
+                      <div>ICAM-1</div>
+                      <div>ИЛ-1β</div>
+                      <div>ИЛ-6</div>
+                    </div>
+                    <div class="graphical-row__sub-column">
+                      <div>MCP-1</div>
+                      <div>ФНО-α</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="graphical-row">
+                  <div class="graphical-row__icon">
+                    <img src="./img/галочка.svg" width="32" height="32" alt="" class="graphical-row__img">
+                  </div>
+                  <div class="graphical-row__name">Кортикостероиды</div>
+                  <div class="graphical-row__line"></div>
+                  <div class="graphical-row__desc">
+                    <span class="colored">подавляют</span>
+                  </div>
+                  <div class="graphical-row__line"></div>
+                  <div class="graphical-row__sub">
+                    <div class="graphical-row__sub-column">
+                      <div>экспрессию VEGF</div>
+                    </div>
+                  </div>
+                </div>
+                <p>
+                  Таким образом, было доказано, что препарат ОЗУРДЕКС®уменьшает ДМО за счет
+                  противовоспалительного действия, воздействия на сосуды и активации дренажных
+                  механизмов*5–9.
+                </p>
+                <div class="mini">
+                  <p>
+                    * Доказательства включают данные, полученные на моделях животных.
+                  </p>
+                  <p>
+                    Подробнее о механизме действия препарата ОЗУРДЕКС®
+                  </p>
+                  <p>
+                    Подробнее о роли воспаления в развитии ДМО
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+        <li class="questions__tabs-content" id="questions-tab-content-3">
+          <ul class="section__accordion">
+            <li class="section__accordion-item">
+              <label class="section__accordion-label">
+                <input type="radio" class="visually-hidden" name="questions__accordion-btn" value=""
+                  id="questions__accordion-btn-1">
+                Как часто нужно применять препарат ОЗУРДЕКС<sup>®</sup>?
+              </label>
+              <div class="section__accordion-content">
+                <p>
+                  ОЗУРДЕКС® обеспечивает постоянное высвобождение дексаметазона<sup>5</sup>.
+                </p>
+                <div class="cite">
+                  <p>
+                    <span class="colored"><strong>Интервал</strong></span>
+                    между повторными введениями при ДМО составляет <span class="colored"><strong>примерно 6
+                        месяцев</strong></span> без
+                    нагрузочной дозы <sup>5</sup>.
+                  </p>
+                </div>
+                <p>
+                  При применении препарата ОЗУРДЕКС<sup>®</sup> требуется регулярный
+                  контроль ВГД<sup>5</sup>. Такой упрощенный режим введения препарата может оказаться
+                  полезным для пациентов, которым трудно вписать лечение ДМО в свой и без того
+                  загруженный график<sup>11, 14</sup>.
+                </p>
+                <div class="mini">
+                  <p>
+                    Подробнее о данных по препарату ОЗУРДЕКС®, полученных в условиях клинической
+                    практики
+                  </p>
+                  <p>
+                    Подробнее о данных по препарату ОЗУРДЕКС®, полученных в опорных
+                    исследованиях
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="section__accordion-item">
+              <label class="section__accordion-label">
+                <input type="radio" class="visually-hidden" name="questions__accordion-btn" value=""
+                  id="questions__accordion-btn-2">
+                Каковы преимущества графика введения препарата
+                ОЗУРДЕКС<sup>®</sup> для пациентов с сахарным диабетом?
+              </label>
+              <div class="section__accordion-content">
+                <p>
+                  ДМО может сильно усложнять жизнь пациентам. Помимо сахарного диабета
+                  пациенты с ДМО могут страдать от ряда других сопутствующих заболеваний,
+                  связанных с диабетом, и, следовательно, могут регулярно посещать лечебные
+                  учреждения<sup>14–16</sup>. Часто это люди трудоспособного возраста, поэтому им трудно
+                  совмещать приемы у врача с напряженным рабочим графиком и семейной
+                  жизнью<sup>15, 16</sup>.
+                </p>
+                <div class="colored-cite">
+                  <div class="pluced">
+                    <div class="pluced-text">меньше инъекций</div>
+                    <div class="pluced-text">+</div>
+                    <div class="pluced-text">меньше визитов</div>
+                    <div class="pluced-text">=</div>
+                    <div class="pluced-text">эффективный результат</div>
+                  </div>
+                </div>
+                <p>
+                  В одном из исследований выяснили, что пациенты хотели бы получать
+                  меньше инъекций и совершать меньше визитов для достижения тех же результатов
+                  в отношении зрения<sup>14</sup>. Это говорит о том, что пациенты не хотят соглашаться на
+                  менее эффективные результаты, но хотели бы уменьшить нагрузку, связанную
+                  с лечением<sup>14</sup>.
+                </p>
+                <div class="cite">
+                  <p>
+                    <span class="colored"><strong>Интервал</strong></span>
+                    между повторными введениями при ДМО составляет <span class="colored"><strong>примерно 6
+                        месяцев</strong></span> без
+                    нагрузочной дозы <sup>5</sup>.
+                  </p>
+                </div>
+                <p>
+                  <strong class="colored">Такой график введения
+                    означает, что ОЗУРДЕКС<sup>®</sup> может помочь снизить нагрузку, связанную с лечением,
+                    у пациентов с ДМО</strong><sup class="colored">14-16</sup>. Это указано в рекомендациях EURETINA,
+                  где говорится,
+                  что «кортикостероиды могут рассматриваться в качестве терапии первой линии [у]
+                  пациентов, не желающих совершать ежемесячные визиты для выполнения инъекций
+                  и (или) мониторинга в первые 6 месяцев терапии, однако у таких пациентов все
+                  равно необходимо контролировать ВГД». Из кортикостероидов «в первую очередь
+                  следует использовать дексаметазон»<sup>11</sup>.
+                </p>
+                <p>
+                  <strong>Sivraprasad S и Oyetunde S., 2016 г</strong>. В общей сложности 131 пациент с поражением
+                  сетчатки (86 случаев ДМО; 45 случаев ОВС) из Германии, Италии и Великобритании
+                  заполнили подробный опросник о влиянии инъекционной терапии на качество
+                  жизни. <span class="colored">Цель исследования заключалась в изучении нагрузки, связанной с
+                    лечением, степени тревоги и беспокойства, а также практических вопросов, таких
+                    как посещение врача и отсутствие на рабочем месте,</span> в популяции пациентов,
+                  получающих инъекционную терапию при ДМО или ОВС<sup>14</sup>.
+                </p>
+                <div class="mini">
+                  <p>
+                    Подробнее о данных по препарату ОЗУРДЕКС®, полученных в условиях клинической
+                    практики
+                  </p>
+                  <p>
+                    Подробнее о данных по препарату ОЗУРДЕКС®, полученных в опорных
+                    исследованиях
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="section__accordion-item">
+              <label class="section__accordion-label">
+                <input type="radio" class="visually-hidden" name="questions__accordion-btn" value=""
+                  id="questions__accordion-btn-3">
+                Какие условия и оборудование необходимы для введения
+                препарата ОЗУРДЕКС<sup>®</sup>?
+              </label>
+              <div class="section__accordion-content">
+                <p>
+                  Препарат ОЗУРДЕКС<sup>®</sup> следует вводить в контролируемых асептических условиях.
+                  Для проведения инъекции препарата ОЗУРДЕКС<sup>®</sup> необходимо следующее
+                  (или эквивалентное) оборудование:
+                </p>
+                <ul class="prep">
+                  <li class="prep__item">
+                    <div class="prep__img-wrap">
+                      <img src="./img/image1.png" width="185" alt="" class="prep__img">
+                    </div>
+                    <div class="prep__desc">
+                      <ul>
+                        <li>антисептик <br> местного действия</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="prep__item">
+                    <div class="prep__img-wrap">
+                      <img src="./img/image2.png" width="240" alt="" class="prep__img">
+                    </div>
+                    <div class="prep__desc">
+                      <ul>
+                        <li>местнаяанестезия</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="prep__item">
+                    <div class="prep__img-wrap">
+                      <img src="./img/image3.png" width="324" alt="" class="prep__img">
+                    </div>
+                    <div class="prep__desc">
+                      <ul>
+                        <li>аппликатор препарата ОЗУРДЕКС<sup>®</sup></li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="prep__item">
+                    <div class="prep__img-wrap">
+                      <img src="./img/image4.png" width="185" alt="" class="prep__img">
+                    </div>
+                    <div class="prep__desc">
+                      <ul>
+                        <li>стерильные <br> перчатки</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="prep__item">
+                    <div class="prep__img-wrap">
+                      <img src="./img/image5.png" width="179" alt="" class="prep__img">
+                    </div>
+                    <div class="prep__desc">
+                      <ul>
+                        <li>стерильный <br> векорасширитель</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="prep__item">
+                    <div class="prep__img-wrap">
+                      <img src="./img/image6.png" width="143" alt="" class="prep__img">
+                    </div>
+                    <div class="prep__desc">
+                      <ul>
+                        <li>стерильная <br> ватная палочка</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="prep__item">
+                    <div class="prep__img-wrap">
+                      <img src="./img/image7.png" width="252" alt="" class="prep__img">
+                    </div>
+                    <div class="prep__desc">
+                      <ul>
+                        <li>
+                          стерильная <br> хирургическая
+                          салфетка<sup>5</sup>.
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+                <div class="mini">
+                  <p>
+                    Подробнее о данных по препарату ОЗУРДЕКС®, полученных в условиях клинической
+                    практики
+                  </p>
+                  <p>
+                    Подробнее о данных по препарату ОЗУРДЕКС®, полученных в опорных
+                    исследованиях
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="section__accordion-item">
+              <label class="section__accordion-label">
+                <input type="radio" class="visually-hidden" name="questions__accordion-btn" value=""
+                  id="questions__accordion-btn-3">
+                Существуют ли отличия процедуры введения препарата
+                Озурдекс<sup>®</sup> от других интравитреальных инъекций, о которых следует проинформировать пациента?
+              </label>
+              <div class="section__accordion-content">
+                <p>
+                  Процедура введения препарата ОЗУРДЕКС<sup>®</sup> аналогична другим интравитреальным
+                  инъекциям, однако она предполагает <span class="colored">более упрощенный график введения</span> по
+                  сравнению с антиVEGF
+                  препаратами<sup>5, 17–20</sup>.
+                  Технология NOVADUR<sup>®</sup> в препарате ОЗУРДЕКС<sup>®</sup> обеспечивает стабильное
+                  высвобождение дексаметазона через биодеградируемый имплантат<sup>21</sup>.
+                </p>
+                <div class="cite">
+                  <p>
+                    <span class="colored"><strong>Интервал</strong></span>
+                    между повторными введениями при ДМО составляет <span class="colored"><strong>примерно 6
+                        месяцев</strong></span> без
+                    нагрузочной дозы<sup>5</sup>.
+                  </p>
+                </div>
+                <p>
+                  При применении препарата ОЗУРДЕКС<sup>®</sup> требуется регулярный
+                  контроль ВГД<sup>5</sup>. Такой <span class="colored">упрощенный график</span> введения препарата
+                  может
+                  быть полезен
+                  пациентам и врачам, поскольку он <span class="colored">помогает снизить нагрузку, связанную с лечением
+                    ДМО</span>, и может улучшить приверженность к лечению<sup>14-16</sup>.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </li>
+        <li class="questions__tabs-content" id="questions-tab-content-4">
+          <ul class="section__accordion">
+            <li class="section__accordion-item">
+              <label class="section__accordion-label">
+                <input type="radio" class="visually-hidden" name="questions__accordion-btn" value=""
+                  id="questions__accordion-btn-1">
+                Каковы меры безопасности при применении препарата
+                ОЗУРДЕКС<sup>®</sup>?
+              </label>
+              <div class="section__accordion-content">
+                <p>
+                  ОЗУРДЕКС<sup>®</sup> имеет предсказуемый и управляемый профиль безопасности<sup>5, 10</sup>.
+                  При лечении кортикостероидами и интравитреальных инъекциях может наблюдаться
+                  повышение ВГД<sup>5</sup>. Применение кортикостероидов может также провоцировать развитие
+                  катаракты<sup>5, 10, 22</sup>.
+                </p>
+                <div class="cite">
+                  <div class="cite__title">
+                    Внутриглазное давление
+                  </div>
+                  <p>
+                    Повышение ВГД, как правило, носит преходящий характер и обычно устраняется
+                    с помощью препаратов, снижающих ВГД, однако необходим регулярный
+                    мониторинг<sup>5, 23</sup>. <span class="colored">Было доказано, что частота и величина повышения
+                      ВГД
+                      не увеличиваются при повторных инъекциях в течение 3 лет<sup>10</sup></span>Во время референтного
+                    исследования MEAD у 41,5% пациентов (n = 144/347)
+                    требовалось введение препаратов, снижающих ВГД в исследуемом глазу на
+                    определенном этапе в течение 3 лет исследования. Только один пациент (0,3%)
+                    потребовалась трабекулэктомия из-за повышения ВГД, вызванного применением
+                    кортикостероидов<sup>10</sup>.
+                  </p>
+                </div>
+                <div class="cite">
+                  <div class="cite__title">
+                    Катаракта
+                  </div>
+                  <p>
+                    <span class="colored">Следует учитывать, что вероятность развития катаракты у пациентов с сахарным
+                      диабетом выше.</span> В одном ретроспективном обсервационном исследовании
+                    у пациентов с недавно диагностированным сахарным диабетом (n = 56 510)
+                    этот показатель был примерно в 2 раза выше, чем в общей популяции<sup>24</sup>. В ходе
+                    опорного исследования MEAD 87,0% пациентов с псевдофакией, получавших
+                    ОЗУРДЕКС<sup>®</sup>, имели ту или иную степень помутнения хрусталика/раннюю катаракту на исходном
+                    уровне<sup>5</sup>.
+                  </p>
+                  <div class="cite-grap">
+                    <div class="cite-grap__img-wrap">
+                      <img src="./img/95.png" width="202" alt="" class="cite-grap__img">
+                    </div>
+                    <div class="cite-grap__text">
+                      <span class="colored">Частота нежелательных явлений, связанных с катарактой</span>
+                      (включая кортикальную катаракту, диабетическую катаракту, ядерную катаракту,
+                      субкапсулярную катаракту, лентикулярную катаракту и катаракту), <span class="colored">составила
+                        67,9%
+                        у пациентов с псевдофакией<sup>5, 10</sup>.</span>
+                    </div>
+                  </div>
+                  <p>
+                    <strong>После операции по поводу катаракты наблюдалось
+                      улучшение зрения</strong> по сравнению с исходным уровнем, и к концу исследования лечение
+                    препаратом
+                    ОЗУРДЕКС<sup>®</sup> приводило к
+                    улучшению МКОЗ независимо
+                    от состояния хрусталика на исходном уровне<sup>10</sup>.
+                  </p>
+                </div>
+                <p>
+                  При лечении такого угрожающего зрению заболевания, как ДМО10, необходимо
+                  найти оптимальный баланс между безопасностью и улучшением зрения<sup>25</sup>.
+                </p>
+                <div class="mini">
+                  <p>
+                    Подробнее о профиле безопасности препарата ОЗУРДЕКС<sup>®</sup>
+                  </p>
+                  <p>
+                    Подробнее о данных по препарату ОЗУРДЕКС<sup>®</sup>, полученных в условиях клинической
+                    практики
+                  </p>
+                  <p>
+                    Подробнее о данных по препарату ОЗУРДЕКС<sup>®</sup>, полученных в опорных
+                    исследованиях
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="modern section">
+    <div class="container">
+      <h2 class="modern__title section__title">
+        Современенная интравитреальная хирургия
+      </h2>
+
+      <ul class="modern__tabs section__tabs">
+        <li class="modern__tabs-item section__tabs-item text-center">
+          <label class="modern__tabs-label">
+            <input type="radio" class="visually-hidden section__tabs-btn" name="modern-tab-btn" value="" checked
+              id="modern-tab-btn-1">
+            Резолюция совета экспертов
+          </label>
+          <div class="section__accordion-content">
+            описание 1
+          </div>
+        </li>
+        <li class="modern__tabs-item section__tabs-item text-center">
+          <label class="modern__tabs-label">
+            <input type="radio" class="visually-hidden section__tabs-btn" name="modern-tab-btn" value=""
+              id="modern-tab-btn-2">
+            Алгоритм терапии ДМО
+          </label>
+          <div class="section__accordion-content">
+            описание 2
+          </div>
+        </li>
+        <li class="modern__tabs-item section__tabs-item text-center">
+          <label class="modern__tabs-label">
+            <input type="radio" class="visually-hidden section__tabs-btn" name="modern-tab-btn" value=""
+              id="modern-tab-btn-3">
+            Клинические случаи
+          </label>
+          <div class="section__accordion-content">
+            описание 3
+          </div>
+        </li>
+      </ul>
+
+      <ul class="section__contents modern__contents">
+        <li class="modern__tabs-content" id="modern-tab-content-1">
+          <div class="drug">
+            <div class="drug__img-wrap">
+              <div class="drug__img-bookmark">
+                <svg class="drug__img-bookmark-svg" width="20" height="26" viewBox="0 0 20 26" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M0 0.999999V24.6931C0 25.5683 1.04488 26.0212 1.68364 25.4229L9.33674 18.254C9.71285 17.9016 10.2951 17.8928 10.6817 18.2337L18.3387 24.9843C18.9845 25.5537 20 25.0951 20 24.2342V1C20 0.447715 19.5523 0 19 0H1C0.447715 0 0 0.447715 0 0.999999Z" />
+                </svg>
+              </div>
+              <img src="./img/drug1.webp" alt="" class="drug__img">
+            </div>
+            <div class="drug__desc">
+              <div class="drug__desc-wrap">
+                <div class="drug__tag">
+                  О препарате
+                </div>
+                <div class="drug__title">
+                  РЕЗОЛЮЦИЯ экспертов по профилю «Офтальмология. Витреоретинальная хирургия»
+                </div>
+                <div class="drug__info">
+                  <div class="drug__time">
+                    4 мин чтения
+                  </div>
+                  <div class="drug__date">
+                    12 июля 2023
+                  </div>
+                </div>
+                <div class="drug__text">
+                  30 сентября 2022 г. состоялось заседание экспертов вобласти офтальмологии
+                  и офтальмохирургии на тему: «Биомаркеры воспаления. Новые возможности
+                  дифференцированного...
+                </div>
+              </div>
+              <a href="#" class="drug__link">Читать</a>
+            </div>
+          </div>
+        </li>
+        <li class="modern__tabs-content" id="modern-tab-content-2">
+          <div class="drug">
+            <div class="drug__img-wrap">
+              <div class="drug__img-bookmark">
+                <svg class="drug__img-bookmark-svg" width="20" height="26" viewBox="0 0 20 26" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M0 0.999999V24.6931C0 25.5683 1.04488 26.0212 1.68364 25.4229L9.33674 18.254C9.71285 17.9016 10.2951 17.8928 10.6817 18.2337L18.3387 24.9843C18.9845 25.5537 20 25.0951 20 24.2342V1C20 0.447715 19.5523 0 19 0H1C0.447715 0 0 0.447715 0 0.999999Z" />
+                </svg>
+              </div>
+              <img src="./img/drug2.webp" alt="" class="drug__img">
+            </div>
+            <div class="drug__desc">
+              <div class="drug__desc-wrap">
+                <div class="drug__tag">
+                  О препарате
+                </div>
+                <div class="drug__title">
+                  АЛГОРИТМ ТЕРАПИИ первого ряда и клинические рекомендации по лечению ДМО
+                </div>
+                <div class="drug__info">
+                  <div class="drug__time">
+                    4 мин чтения
+                  </div>
+                  <div class="drug__date">
+                    12 июля 2023
+                  </div>
+                </div>
+                <div class="drug__text">
+                  В 2019 году Laurent Kodjikian и соавторы опубликовали алгоритм, который позволяет провести
+                  дифференциальную диагностику
+                  и выбор терапии ДМО на основании различных критериев для достижения клинической эффективности...
+                </div>
+              </div>
+              <a href="#" class="drug__link">Читать</a>
+            </div>
+          </div>
+        </li>
+        <li class="modern__tabs-content" id="modern-tab-content-3">
+          <ul class="drag-mini">
+            <li class="drag-mini__item">
+              <div class="drag-mini__img-wrap">
+                <img src="./img/drug-mini/drug-mini-1.webp" alt="" class="drag-mini__img">
+              </div>
+              <div class="drag-mini__desc">
+                <div class="drag-mini__desc-wrap">
+                  <div class="drag-mini__title">
+                    Полное разрешение рефрактерного кистозного ДМО с улучшением МКОЗ с 0,06 до 0,3
+                  </div>
+                  <div class="drag-mini__info">
+                    <div class="drag-mini__time">
+                      4 мин чтения
+                    </div>
+                    <div class="drag-mini__date">
+                      12 июля 2023
+                    </div>
+                  </div>
+                  <div class="drag-mini__text">
+                    А., 64 года. Н36.8 OU — пролиферативная диабетическая ретинопатия...
+                  </div>
+                </div>
+                <a href="#" class="drag-mini__link">Читать</a>
+              </div>
+            </li>
+            <li class="drag-mini__item">
+              <div class="drag-mini__img-wrap">
+                <img src="./img/drug-mini/drug-mini-2.webp" alt="" class="drag-mini__img">
+              </div>
+              <div class="drag-mini__desc">
+                <div class="drag-mini__desc-wrap">
+                  <div class="drag-mini__title">
+                    Снижение ТСЦЗ на 280 мкн, уменьшение количеств и размеров ГРО
+                  </div>
+                  <div class="drag-mini__info">
+                    <div class="drag-mini__time">
+                      4 мин чтения
+                    </div>
+                    <div class="drag-mini__date">
+                      12 июля 2023
+                    </div>
+                  </div>
+                  <div class="drag-mini__text">
+                    Б., 41 год. Н36.8 OU – пролиферативная диабетическая ретинопатия
+                    обоих глаз с макулярным отеком. СД 2 типа в течение 11 лет. HbA1...
+                  </div>
+                </div>
+                <a href="#" class="drag-mini__link">Читать</a>
+              </div>
+            </li>
+            <li class="drag-mini__item">
+              <div class="drag-mini__img-wrap">
+                <img src="./img/drug-mini/drug-mini-3.webp" alt="" class="drag-mini__img">
+              </div>
+              <div class="drag-mini__desc">
+                <div class="drag-mini__desc-wrap">
+                  <div class="drag-mini__title">
+                    Кистозный макулярный отек при ОВС. 
+                    Значимое улучшение МКОЗ с 0,1 до 0,6 мкм и снижение ТСЦЗ на 597 мкм.
+                  </div>
+                  <div class="drag-mini__info">
+                    <div class="drag-mini__time">
+                      4 мин чтения
+                    </div>
+                    <div class="drag-mini__date">
+                      12 июля 2023
+                    </div>
+                  </div>
+                  <div class="drag-mini__text">
+                    Г., 68 лет. H34.8 Посттромботическая...
+                  </div>
+                </div>
+                <a href="#" class="drag-mini__link">Читать</a>
+              </div>
+            </li>
+            <li class="drag-mini__item">
+              <div class="drag-mini__img-wrap">
+                <img src="./img/drug-mini/drug-mini-4.webp" alt="" class="drag-mini__img">
+              </div>
+              <div class="drag-mini__desc">
+                <div class="drag-mini__desc-wrap">
+                  <div class="drag-mini__title">
+                    Двукратное снижение высоты диабетического макулярного отека за 3 месяца при пролиферативной
+                    дабетической ретинопатии
+                  </div>
+                  <div class="drag-mini__info">
+                    <div class="drag-mini__time">
+                      4 мин чтения
+                    </div>
+                    <div class="drag-mini__date">
+                      12 июля 2023
+                    </div>
+                  </div>
+                  <div class="drag-mini__text">
+                    Д., 62 год. Н36.8 OU — Диабетический макулярный...
+                  </div>
+                </div>
+                <a href="#" class="drag-mini__link">Читать</a>
+              </div>
+            </li>
+            <li class="drag-mini__item">
+              <div class="drag-mini__img-wrap">
+                <img src="./img/drug-mini/drug-mini-5.webp" alt="" class="drag-mini__img">
+              </div>
+              <div class="drag-mini__desc">
+                <div class="drag-mini__desc-wrap">
+                  <div class="drag-mini__title">
+                    Значимое уменьшение количества твердых экссудатов при ДМО  
+                  </div>
+                  <div class="drag-mini__info">
+                    <div class="drag-mini__time">
+                      4 мин чтения
+                    </div>
+                    <div class="drag-mini__date">
+                      12 июля 2023
+                    </div>
+                  </div>
+                  <div class="drag-mini__text">
+                    Е., 66 лет. Н36.8 OU — пролиферативная диабетическая ретинопатия с макулярным отеком. Неполная
+                    осложненная...
+                  </div>
+                </div>
+                <a href="#" class="drag-mini__link">Читать</a>
+              </div>
+            </li>
+            <li class="drag-mini__item">
+              <div class="drag-mini__img-wrap">
+                <img src="./img/drug-mini/drug-mini-6.webp" alt="" class="drag-mini__img">
+              </div>
+              <div class="drag-mini__desc">
+                <div class="drag-mini__desc-wrap">
+                  <div class="drag-mini__title">
+                    Диффузно-кистозный макулярный отек со снижением ТСЦЗ с 385 до 252 мкм
+                  </div>
+                  <div class="drag-mini__info">
+                    <div class="drag-mini__time">
+                      4 мин чтения
+                    </div>
+                    <div class="drag-mini__date">
+                      12 июля 2023
+                    </div>
+                  </div>
+                  <div class="drag-mini__text">
+                    Ж., 53 года. Н36.8 OU — пролиферативная диабетическая ретинопатия с КЗМО. ИНСД...
+                  </div>
+                </div>
+                <a href="#" class="drag-mini__link">Читать</a>
+              </div>
+            </li>
+            <li class="drag-mini__item">
+              <div class="drag-mini__img-wrap">
+                <img src="./img/drug-mini/drug-mini-7.webp" alt="" class="drag-mini__img">
+              </div>
+              <div class="drag-mini__desc">
+                <div class="drag-mini__desc-wrap">
+                  <div class="drag-mini__title">
+                    Выраженное уменьшение диффузно-кистозного ДМО через 7 недель
+                  </div>
+                  <div class="drag-mini__info">
+                    <div class="drag-mini__time">
+                      4 мин чтения
+                    </div>
+                    <div class="drag-mini__date">
+                      12 июля 2023
+                    </div>
+                  </div>
+                  <div class="drag-mini__text">
+                    З., 55 лет. Н36.8 Препролиферативная диабетическая ретинопатия с макулярным отеком, неполная...
+                  </div>
+                </div>
+                <a href="#" class="drag-mini__link">Читать</a>
+              </div>
+            </li>
+            <li class="drag-mini__item">
+              <div class="drag-mini__img-wrap">
+                <img src="./img/drug-mini/drug-mini-8.webp" alt="" class="drag-mini__img">
+              </div>
+              <div class="drag-mini__desc">
+                <div class="drag-mini__desc-wrap">
+                  <div class="drag-mini__title">
+                    Полное разрешение ДМО с улучшением остроты зрения с 0,3 до 0,5
+                  </div>
+                  <div class="drag-mini__info">
+                    <div class="drag-mini__time">
+                      4 мин чтения
+                    </div>
+                    <div class="drag-mini__date">
+                      12 июля 2023
+                    </div>
+                  </div>
+                  <div class="drag-mini__text">
+                    И., 56 лет. Н36.8 OU — пролиферативная диабетическая ретинопатия обоих глаз с макулярным отеком OD.
+                    СД II типа,
+                    диагностирован 2 года назад.
+                    HbA1c — нд. Жалобы...
+                  </div>
+                </div>
+                <a href="#" class="drag-mini__link">Читать</a>
+              </div>
+            </li>
+            <li class="drag-mini__item">
+              <div class="drag-mini__img-wrap">
+                <img src="./img/drug-mini/drug-mini-9.webp" alt="" class="drag-mini__img">
+              </div>
+              <div class="drag-mini__desc">
+                <div class="drag-mini__desc-wrap">
+                  <div class="drag-mini__title">
+                    За 1 месяц терапии значимое снижение ТСЦЗ с улучшением остроты зрения с 0,8 до 0,2 
+                  </div>
+                  <div class="drag-mini__info">
+                    <div class="drag-mini__time">
+                      4 мин чтения
+                    </div>
+                    <div class="drag-mini__date">
+                      12 июля 2023
+                    </div>
+                  </div>
+                  <div class="drag-mini__text">
+                    К., 48 лет. Н36.8 OU — пролиферативная диабетическая ретинопатия обоих глаз с макулярным отеком
+                    OD...
+                  </div>
+                </div>
+                <a href="#" class="drag-mini__link">Читать</a>
+              </div>
+            </li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+
+  <div class="medication section">
+    <div class="container">
+      <h2 class="medication__title section__title">
+        О препарате Озурдекс®
+      </h2>
+
+      <ul class="medication__tabs section__tabs">
+        <li class="medication__tabs-item section__tabs-item text-center">
+          <label class="medication__tabs-label">
+            <input type="radio" class="visually-hidden section__tabs-btn" name="medication-tab-btn" value="" checked
+              id="medication-tab-btn-1">
+            Инструкция
+          </label>
+        </li>
+        <li class="medication__tabs-item section__tabs-item text-center">
+          <label class="medication__tabs-label">
+            <input type="radio" class="visually-hidden section__tabs-btn" name="medication-tab-btn" value=""
+              id="medication-tab-btn-2">
+            Механизм действия
+          </label>
+        </li>
+        <li class="medication__tabs-item section__tabs-item text-center">
+          <label class="medication__tabs-label">
+            <input type="radio" class="visually-hidden section__tabs-btn" name="medication-tab-btn" value=""
+              id="medication-tab-btn-3">
+            Введение препарата
+          </label>
+        </li>
+      </ul>
+
+      <ul class="section__contents medication__contents">
+        <li class="medication__tabs-content" id="medication-tab-content-1">
+          <div class="drug">
+            <div class="drug__img-wrap">
+              <div class="drug__img-bookmark">
+                <svg class="drug__img-bookmark-svg" width="20" height="26" viewBox="0 0 20 26" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M0 0.999999V24.6931C0 25.5683 1.04488 26.0212 1.68364 25.4229L9.33674 18.254C9.71285 17.9016 10.2951 17.8928 10.6817 18.2337L18.3387 24.9843C18.9845 25.5537 20 25.0951 20 24.2342V1C20 0.447715 19.5523 0 19 0H1C0.447715 0 0 0.447715 0 0.999999Z" />
+                </svg>
+              </div>
+              <img src="./img/drug3.webp" alt="" class="drug__img">
+            </div>
+            <div class="drug__desc">
+              <div class="drug__desc-wrap">
+                <div class="drug__tag">
+                  О препарате
+                </div>
+                <div class="drug__title">
+                  Инструкция применению препарата Ozurdex®
+                </div>
+                <div class="drug__info">
+                  <div class="drug__time">
+                    4 мин чтения
+                  </div>
+                  <div class="drug__date">
+                    12 июля 2023
+                  </div>
+                </div>
+                <div class="drug__text">
+                  В данной статье вы найдете «Инструкцию для пациента» и «Инструкцию для врача».
+                </div>
+              </div>
+              <a href="#" class="drug__link">Читать</a>
+            </div>
+          </div>
+        </li>
+        <li class="medication__tabs-content" id="medication-tab-content-2">
+          <div class="drug">
+            <div class="drug__img-wrap">
+              <div class="drug__img-bookmark">
+                <svg class="drug__img-bookmark-svg" width="20" height="26" viewBox="0 0 20 26" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M0 0.999999V24.6931C0 25.5683 1.04488 26.0212 1.68364 25.4229L9.33674 18.254C9.71285 17.9016 10.2951 17.8928 10.6817 18.2337L18.3387 24.9843C18.9845 25.5537 20 25.0951 20 24.2342V1C20 0.447715 19.5523 0 19 0H1C0.447715 0 0 0.447715 0 0.999999Z" />
+                </svg>
+              </div>
+              <img src="./img/drug-4.webp" alt="" class="drug__img">
+            </div>
+            <div class="drug__desc">
+              <div class="drug__desc-wrap">
+                <div class="drug__tag">
+                  О препарате
+                </div>
+                <div class="drug__title">
+                  МЕХАНИЗМ ДЕЙСТВИЯ ОЗУРДЕКСА <sup>®</sup>
+                </div>
+                <div class="drug__info">
+                  <div class="drug__time">
+                    4 мин чтения
+                  </div>
+                  <div class="drug__date">
+                    12 июля 2023
+                  </div>
+                </div>
+                <div class="drug__text">
+                  По ссылке ниже можно познакомиться с видео, в котором представлены:
+
+                  <ul>
+                    <li>Патогенез макулярного отека у пациентов</li>
+                    <li>Факторы, влияющие на развитие заболевания</li>
+                    <li>Важные аспекты применения препарата Озурдекс®.</li>
+                  </ul>
+
+                </div>
+              </div>
+              <a href="#" class="drug__link">Читать</a>
+            </div>
+          </div>
+        </li>
+        <li class="medication__tabs-content" id="medication-tab-content-3">
+          <div class="drug">
+            <div class="drug__img-wrap">
+              <div class="drug__img-bookmark">
+                <svg class="drug__img-bookmark-svg" width="20" height="26" viewBox="0 0 20 26" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M0 0.999999V24.6931C0 25.5683 1.04488 26.0212 1.68364 25.4229L9.33674 18.254C9.71285 17.9016 10.2951 17.8928 10.6817 18.2337L18.3387 24.9843C18.9845 25.5537 20 25.0951 20 24.2342V1C20 0.447715 19.5523 0 19 0H1C0.447715 0 0 0.447715 0 0.999999Z" />
+                </svg>
+              </div>
+              <img src="./img/drug-5.webp" alt="" class="drug__img">
+            </div>
+            <div class="drug__desc">
+              <div class="drug__desc-wrap">
+                <div class="drug__tag">
+                  О препарате
+                </div>
+                <div class="drug__title">
+                  ОЗУРДЕКС® представляет собой имплантат в шприц-ручке, предназначенный для однократного
+                  интравитреального введения.
+                </div>
+                <div class="drug__info">
+                  <div class="drug__time">
+                    4 мин чтения
+                  </div>
+                  <div class="drug__date">
+                    12 июля 2023
+                  </div>
+                </div>
+                <div class="drug__text">
+                  Процедура введения должна выполняться квалифицированным офтальмологом при максимальном соблюдении
+                  правил асепики.
+                  Пациенту...
+                </div>
+              </div>
+              <a href="#" class="drug__link">Читать</a>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+
+  <div class="library section">
+    <div class="container">
+      <h2 class="library__title section__title">
+        Библиотека публикаций
+      </h2>
+
+      <ul class="library__articles">
+        <li class="library-article">
+          <div class="library-article__img-wrap">
+            <img src="./img/library1.webp" alt="" class="library-article__img">
+          </div>
+          <div class="library-article__desc">
+            <div class="library-article__desc-wrap">
+              <div class="library-article__title">
+                Переключение с Озурдекса® на aVEGF
+              </div>
+              <div class="library-article__info">
+                <div class="library-article__time">
+                  4 мин чтения
+                </div>
+                <div class="library-article__date">
+                  12 июля 2023
+                </div>
+              </div>
+              <div class="library-article__text">
+                По ссылке ниже вы сможете ознакомиться с видео, в котором представлены ответы на следующие вопросы:
+
+                <ul>
+                  <li>Что делать с пациентами, рефрактерными к лечению aVEGF препаратами?</li>
+                  <li>Какие критерии эффективности можно использовать при оценке?</li>
+                  <li>Какая тактика лечения таких пациентов?</li>
+                </ul>
+              </div>
+            </div>
+            <a href="#" class="library-article__link">Читать</a>
+          </div>
+        </li>
+        <li class="library-article">
+          <div class="library-article__img-wrap">
+            <img src="./img/library2.webp" alt="" class="library-article__img">
+          </div>
+          <div class="library-article__desc">
+            <div class="library-article__desc-wrap">
+              <div class="library-article__title">
+                Лечение ДМО у наивных пациентов
+              </div>
+              <div class="library-article__info">
+                <div class="library-article__time">
+                  4 мин чтения
+                </div>
+                <div class="library-article__date">
+                  12 июля 2023
+                </div>
+              </div>
+              <div class="library-article__text">
+                По ссылке ниже вы сможете ознакомиться с видео, в котором представлены ответы на следующие вопросы:
+
+                <ul>
+                  <li>Можно ли использовать Озурдекс® в первой линии терапии  у пациентов с ДМО?</li>
+                  <li>Факторы, влияющие на комплаентность лечения</li>
+                  <li>Есть ли разница в эффективности лечения Озурдексом® у наивных пациентов...</li>
+                </ul>
+              </div>
+            </div>
+            <a href="#" class="library-article__link">Читать</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+
+</html>
